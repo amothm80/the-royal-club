@@ -1,0 +1,12 @@
+include header.pug
+h1 Please Register
+form(action="/register" method='post')
+    label(for="email") eMail 
+    input(type="email" id='email' name='email' required)
+    label(for="password") Password 
+    input(type='password' id='password' name='password' required)
+    label(for='confirmPassword') Confirm Password 
+    input(type='password' id='confirmPassword' name='confirmPassword' required)
+    label(for='membership') Membership Code (optional)
+    input(type='text' id='membership' name='membership')
+    button(type='submit') Submit  
