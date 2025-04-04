@@ -13,19 +13,23 @@ export const loginRouter = express.Router();
 
 // When you visit http://localhost:3000/login, you will see "Login Page"
 loginRouter.get("/login", (req, res, next) => {
-  const form =
-    '<h1>Login Page</h1><form method="POST" action="/login">\
-    Enter Username:<br><input type="text" name="username">\
-    <br>Enter Password:<br><input type="password" name="password">\
-    <br><br><input type="submit" value="Submit"></form>';
-
   res.render('login');
 });
+// import '../config/passport.js';
 
 loginRouter.post(
   "/login",
   passport.authenticate("local", {
-    failureRedirect: "/login-failure",
+    failureRedirect: "login-failure",
     successRedirect: "login-success"
   })
 );
+
+
+
+loginRouter.get('/login-failure', (req,res,next)=>{
+  res.render('login-failure')
+})
+loginRouter.get('/login-success', (req,res,next)=>{
+  res.render('login-success')
+})
