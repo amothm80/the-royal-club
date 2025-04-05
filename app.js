@@ -57,10 +57,10 @@ app.use(
 import "./config/passport.js";
 app.use(passport.session());
 
-app.use((req, res, next) => {
-  // console.log(req.user)
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log(req.user)
+//   next();
+// });
 
 /**
  * -------------- ROUTES ----------------
@@ -75,23 +75,23 @@ app.use((req, res, next) => {
 //   })
 // );
 
-app.post(
-  "/login",
-  passport.authenticate(
-    "local",
-    // function (error, user, info) {
-    //   // this will execute in any case, even if a passport strategy will find an error
-    //   // log everything to console
-    //   console.log(error);
-    //   console.log(user);
-    //   console.log(info);
-    // },
-    {
-      failureRedirect: "login-failure",
-      successRedirect: "login-success",
-    }
-  )
-);
+// app.post(
+//   "/login",
+//   passport.authenticate(
+//     "local",
+//     // function (error, user, info) {
+//     //   // this will execute in any case, even if a passport strategy will find an error
+//     //   // log everything to console
+//     //   console.log(error);
+//     //   console.log(user);
+//     //   console.log(info);
+//     // },
+//     {
+//       failureRedirect: "login-failure",
+//       successRedirect: "login-success",
+//     }
+//   )
+// );
 
 app.use(router);
 

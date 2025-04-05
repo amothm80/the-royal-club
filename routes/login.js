@@ -31,5 +31,7 @@ loginRouter.get('/login-failure', (req,res,next)=>{
   res.render('login-failure')
 })
 loginRouter.get('/login-success', (req,res,next)=>{
+  console.log(req.user)
+  res.locals.name = req.user.name
   res.render('login-success')
 })

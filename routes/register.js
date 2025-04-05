@@ -11,7 +11,7 @@ const registrationValidation = () => {
 
   return [
     body("email").trim().escape().notEmpty().isEmail().withMessage("Invalid email"),
-    body('name').trim().escape().notEmpty().withMessage("Invalid name"),
+    body('name').trim().notEmpty().withMessage("Invalid name"),
     body(
       "password",
     )
@@ -51,6 +51,8 @@ registerRouter.post("/register", registrationValidation(), async (req, res, next
     const saltHash = genPassword(req.body.password);
     await registerUser(data.email, data.name, saltHash.hash, saltHash.salt)
     res.render('registration-successful')
+  }else{
+    res.redirect("/");
   }
   // //   const saltHash = genPassword(req.body.password);
   // console.log(req.body);
@@ -60,5 +62,5 @@ registerRouter.post("/register", registrationValidation(), async (req, res, next
   // //     "INSERT INTO users (username, hash, salt) VALUES ($1, $2, $3)",
   // //     [req.body.username, saltHash.hash, saltHash.salt]
   // //   );
-  res.redirect("/");
+  
 });

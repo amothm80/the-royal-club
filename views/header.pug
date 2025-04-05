@@ -1,5 +1,5 @@
 include head.pug 
 body 
     header this is a header
-        if (locals.user)
-            p=user
+        if (locals.name)
+            p= `Welcome ${locals.name}`
