@@ -6,6 +6,7 @@ import { pool } from "../config/database.js";
 import { isAuthenticated, isAdmin } from "./authentication.js";
 import { loginRouter } from "./login.js";
 import { registerRouter } from "./register.js";
+import { logoutRouter } from "./logout.js";
 
 export const router = express.Router();
 
@@ -14,12 +15,18 @@ router.get("/", (req, res, next) => {
 });
 
 /**
- * LOGIN ROUTES
+ * LOGIN ROUTE
  *
  */
 
 
 router.use(loginRouter)
+
+/**
+ * LOGOUT ROUTE
+ */
+
+router.use(logoutRouter)
 
 /**
  * REGISTRATION ROUTES

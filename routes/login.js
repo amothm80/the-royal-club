@@ -1,8 +1,6 @@
 import express from "express";
 import passport from "passport";
-import { validatePassword, genPassword } from "../lib/passwordUtils.js";
-import { pool } from "../config/database.js";
-import { isAuthenticated, isAdmin } from "./authentication.js";
+
 
 export const loginRouter = express.Router();
 

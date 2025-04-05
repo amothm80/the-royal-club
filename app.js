@@ -57,43 +57,22 @@ app.use(
 import "./config/passport.js";
 app.use(passport.session());
 
-// app.use((req, res, next) => {
-//   console.log(req.user)
-//   next();
-// });
+app.use((req, res, next) => {
+  console.log(req.user)
+  next();
+});
 
 /**
  * -------------- ROUTES ----------------
  */
 
-// Imports all of the routes from ./routes/index.js
-// app.post(
-//   "/login",
-//   passport.authenticate("local", {
-//     failureRedirect: "login-failure",
-//     successRedirect: "login-success"
-//   })
-// );
 
-// app.post(
-//   "/login",
-//   passport.authenticate(
-//     "local",
-//     // function (error, user, info) {
-//     //   // this will execute in any case, even if a passport strategy will find an error
-//     //   // log everything to console
-//     //   console.log(error);
-//     //   console.log(user);
-//     //   console.log(info);
-//     // },
-//     {
-//       failureRedirect: "login-failure",
-//       successRedirect: "login-success",
-//     }
-//   )
-// );
 
 app.use(router);
+app.use(function (req, res, next) {
+  res.status(404).render('404')
+});
+
 
 /**
  * Error
@@ -102,7 +81,7 @@ app.use(router);
 app.use((err, req, res, next) => {
   console.error(new Date().toISOString());
   console.log(err);
-  res.status(500).send(`Something broke!`);
+  res.status(500).render('500');
 });
 
 /**
