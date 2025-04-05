@@ -35,10 +35,10 @@ export const registrationValidation = () => {
       .notEmpty()
       .custom((value, { req }) => value == req.body.password)
       .withMessage("The passwords must match"),
-    // body("membership")
-    //   .trim()
-    //   .escape()
-    //   .equals("1234").withMessage( "Wrong embership code. You can keep it empty.").optional(),
+    body("membership")
+      .trim()
+      .escape()
+      .equals("1234").withMessage( "Wrong embership code. You can keep it empty.").optional({values:'falsy'})
   ];
 };
 
