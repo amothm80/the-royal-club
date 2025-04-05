@@ -1,14 +1,42 @@
 include header.pug
 h1 Please Register
 form(action="/register" method='post')
-    label(for="email") eMail 
-    input(type="email" id='email' name='email' required)
-    label(for="name") eMail 
-    input(type="name" id='text' name='name' required)
-    label(for="password") Password 
-    input(type='password' id='password' name='password' required)
-    label(for='confirmPassword') Confirm Password 
-    input(type='password' id='confirmPassword' name='confirmPassword' required)
-    label(for='membership') Membership Code (optional)
-    input(type='text' id='membership' name='membership')
-    button(type='submit') Submit  
+    div
+        div 
+            label(for="email") eMail 
+        div
+            input(type="email" id='email' name='email' required)
+        - if (locals.email)
+            div 
+                p=locals.email.msg
+    div 
+        div 
+            label(for="name") Name 
+        div 
+            input(type="name" id='text' name='name' required)
+        - if (locals.name)
+            div 
+                p=locals.name.msg
+    div 
+        div 
+            label(for="password") Password 
+        div
+            input(type='password' id='password' name='password' required)
+        - if (locals.password)
+            div 
+                p=locals.password.msg
+    div 
+        div
+            label(for='') Confirm Password 
+        div 
+            input(type='password' id='confirmPassword' name='confirmPassword' required)
+        - if (locals.confirmPassword)
+            div 
+                p=locals.confirmPassword.msg
+    div 
+        div 
+            label(for='membership') Membership Code (optional)
+        div 
+            input(type='text' id='membership' name='membership')
+    div 
+        button(type='submit') Submit  
