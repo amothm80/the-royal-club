@@ -5,38 +5,38 @@ form(action="/register" method='post')
         div 
             label(for="email") eMail 
         div
-            input(type="email" id='email' name='email' required)
-        - if (locals.email)
+            input(type="email" id='email' name='email' value=locals.fields.email ? locals.fields.email:'' required)
+        - if (locals.errors.email)
             div 
-                p=locals.email.msg
+                p=locals.errors.email.msg
     div 
         div 
             label(for="name") Name 
         div 
-            input(type="name" id='text' name='name' required)
-        - if (locals.name)
+            input(type="name" id='text' name='name' value=locals.fields.name ? locals.fields.name:'' required)
+        - if (locals.errors.name)
             div 
-                p=locals.name.msg
+                p=locals.errors.name.msg
     div 
         div 
             label(for="password") Password 
         div
-            input(type='password' id='password' name='password' required)
-        - if (locals.password)
+            input(type='password' id='password' name='password' value=locals.fields.password ? locals.fields.password:'' required)
+        - if (locals.errors.password)
             div 
-                p=locals.password.msg
+                p=locals.errors.password.msg
     div 
         div
             label(for='') Confirm Password 
         div 
-            input(type='password' id='confirmPassword' name='confirmPassword' required)
-        - if (locals.confirmPassword)
+            input(type='password' id='confirmPassword' name='confirmPassword' value=locals.fields.confirmPassword ? locals.fields.confirmPassword:'' required)
+        - if (locals.errors.confirmPassword)
             div 
-                p=locals.confirmPassword.msg
+                p=locals.errors.confirmPassword.msg
     div 
         div 
             label(for='membership') Membership Code (optional)
         div 
-            input(type='text' id='membership' name='membership')
+            input(type='text' id='membership' name='membership' value=locals.fields.membership ? locals.fields.membership:'')
     div 
         button(type='submit') Submit  
