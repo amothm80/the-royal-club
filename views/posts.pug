@@ -1,5 +1,7 @@
 include ./fragments/header.pug
 h1 posts
+if (locals.savePostSuccess)
+    p Post saved successfully.
 a(href="/add-post") 
     button Add Post 
 if locals.posts 

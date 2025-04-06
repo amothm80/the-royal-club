@@ -14,6 +14,10 @@ export async function showPosts(req, res, next) {
   if (!req.user.member){
     rows.map(row=> row.name = 'Anon')
   }
+  if (req.session.savePostSuccess){
+    res.locals.savePostSuccess=true
+    req.session.savePostSuccess = ''
+  }
   res.locals.posts = rows;
   res.render("posts");
 }
@@ -28,6 +32,7 @@ export async function addPost(req, res, next) {
     const data = matchedData(req);
     try {
       await savePost(data.subject, data.content,req.user.id);
+      req.session.savePostSuccess = true
       res.redirect("/posts");
     } catch (err) {
       console.log(err)
