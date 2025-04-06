@@ -21,5 +21,8 @@ form(action="/login" method="post")
     - if (locals.error)
         div 
             p=locals.error   
+    - if (locals.success)
+        div 
+            p=locals.success   
 h3 If you dont have an account, please <a href="/register">register</a>
 include ./fragments/footer.pug

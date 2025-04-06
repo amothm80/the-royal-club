@@ -49,8 +49,10 @@ export async function registerUser(req, res, next) {
     try {
       const saltHash = genPassword(req.body.password);
       await addUserToUsers(data.email, data.name, saltHash.hash, saltHash.salt);
-      res.render("registration-successful");
+      req.session.RegistrationSuccess = true;
+      res.redirect('/login')
     } catch (err) {
+      console.log(err)
       res.status(500).render("500");
     }
   } else {
