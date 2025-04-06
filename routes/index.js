@@ -6,6 +6,7 @@ import { pool } from "../config/database.js";
 // import { isAuthenticated, isAdmin } from "./authentication.js";
 import { authenticateRouter } from "./authenticate.js";
 import { registerRouter } from "./register.js";
+import { postsRouter } from "./posts.js";
 
 export const router = express.Router();
 
@@ -33,23 +34,9 @@ router.use(registerRouter)
  */
 
 /**
- * MESSAGE POST ROUTES
+ *  POSTS ROUTES
  */
-
-/**
- * MESSAGE DISPLAY ROUTES
- */
-
-/**
- * -------------- POST ROUTES ----------------
- */
-
-
-
-
-/**
- * -------------- GET ROUTES ----------------
- */
+router.use(postsRouter)
 
 
 

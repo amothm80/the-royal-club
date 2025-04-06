@@ -58,6 +58,9 @@ import "./controller/passport.js";
 app.use(passport.session());
 
 app.use((req, res, next) => {
+  if (req.isAuthenticated()){
+    res.locals.name = req.user.name;
+  }
   console.log(req.user)
   next();
 });

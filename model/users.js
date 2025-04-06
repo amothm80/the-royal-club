@@ -1,9 +1,9 @@
 import { pool } from "../config/database.js";
 
-export async function addUserToUsers(email, name, hash, salt) {
+export async function addUserToUsers(email, name, hash, salt, member, admin) {
   await pool.query(
-    "INSERT INTO users (email,name, hash, salt) VALUES ($1, $2, $3,$4)",
-    [email, name, hash, salt]
+    "INSERT INTO users (email,name, hash, salt, member, admin) VALUES ($1, $2, $3,$4,$5,$6)",
+    [email, name, hash, salt, member, admin]
   );
 }
 

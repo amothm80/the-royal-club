@@ -41,8 +41,7 @@ export function loginFailure(req, res, next) {
 
 export function loginSuccess(req, res, next) {
   if (req.isAuthenticated()) {
-    res.locals.name = req.user.name;
-    res.render("login-success");
+    res.redirect("/posts");
   } else {
     res.redirect("/login");
   }

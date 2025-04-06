@@ -48,7 +48,8 @@ export async function registerUser(req, res, next) {
     const data = matchedData(req);
     try {
       const saltHash = genPassword(req.body.password);
-      await addUserToUsers(data.email, data.name, saltHash.hash, saltHash.salt);
+      const member = data.membership = '1234' ? true: false;
+      await addUserToUsers(data.email, data.name, saltHash.hash, saltHash.salt, member, admin);
       req.session.RegistrationSuccess = true;
       res.redirect('/login')
     } catch (err) {

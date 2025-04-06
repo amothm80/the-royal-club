@@ -1,0 +1,16 @@
+include ./fragments/header.pug
+h1 posts
+if locals.posts 
+    each post in posts
+        div 
+            div 
+                p=post.subject 
+            div 
+                p=`by ${post.name}` 
+            div 
+                p= `on ${post.date_time}`
+        div 
+            p=post.content 
+        div 
+            p ---------------------------
+include ./fragments/footer.pug
