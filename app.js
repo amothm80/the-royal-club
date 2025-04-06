@@ -54,7 +54,7 @@ app.use(
 /**
  * -------------- PASSPORT AUTHENTICATION ----------------
  */
-import "./config/passport.js";
+import "./controller/passport.js";
 app.use(passport.session());
 
 app.use((req, res, next) => {

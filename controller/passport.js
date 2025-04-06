@@ -1,6 +1,6 @@
 import passport from "passport";
 import passportlocal from "passport-local";
-import { pool } from "./database.js";
+import { pool } from "../config/database.js";
 import { validatePassword } from "../lib/passwordUtils.js";
 const LocalStrategy = passportlocal.Strategy;
 
@@ -21,12 +21,12 @@ const verifyCallback = async (username, password, done) => {
     );
     const user = rows[0];
     if (!user) {
-      return done(null, false, { message: "incorrect username" });
+      return done(null, false, { message: "Incorrect Username and/or Password" });
     }
     // const match = await bcrypt.compare(password, user.password);
     const isValid = validatePassword(password, user.hash, user.salt);
     if (!isValid) {
-      return done(null, false, { message: "incorrect password" });
+      return done(null, false, { message: "Incorrect Username and/or Password" });
     }
     return done(null, user);
   } catch (err) {

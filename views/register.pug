@@ -1,4 +1,4 @@
-include header.pug
+include ./fragments/header.pug
 h1 Please Register
 form(action="/register" method='post')
     -let fields= {}
@@ -45,3 +45,4 @@ form(action="/register" method='post')
             input(type='text' id='membership' name='membership' value=fields.membership)
     div 
         button(type='submit') Submit  
+include ./fragments/footer.pug
