@@ -1,6 +1,9 @@
 import passport from "passport";
 
 export function getLogin(req, res, next) {
+  if (req.isAuthenticated()){
+    res.redirect('/posts')
+  }
   if (req.session.loginError) {
     res.locals.error = "Wrong email/password provided";
     req.session.loginError = "";
@@ -57,17 +60,19 @@ export function getLogout(req, res, next) {
   });
 }
 
-export function isAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res
-      .status(401)
-      .send(
-        '<h1>You are not authorized to view this resource</h1><p><a href="/login">Login</a></p>'
-      );
-  }
-}
+// export function isAuthenticated(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     next();
+//   } else {
+//     res
+//       .status(401)
+//       .send(
+//         '<h1>You are not authorized to view this resource</h1><p><a href="/login">Login</a></p>'
+//       );
+//   }
+// }
+
+
 
 export function isAdmin(req, res, next) {
   if (req.isAuthenticated() && req.user.admin) {
