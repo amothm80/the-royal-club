@@ -24,6 +24,8 @@ app.use(helmet());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("static"));
+
 
 /**
  * -------------- SESSION SETUP ----------------
@@ -60,6 +62,8 @@ app.use(passport.session());
 app.use((req, res, next) => {
   if (req.isAuthenticated()){
     res.locals.name = req.user.name;
+  }else{
+    delete res.locals.name;
   }
   console.log(req.user)
   next();

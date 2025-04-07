@@ -1,0 +1,23 @@
+doctype html 
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/css/init.css")
+        link(rel="stylesheet", href="/css/globals.css")
+        link(rel="stylesheet", href="/css/styles.css")
+        title The Royal Club 
+body 
+    header
+        div 
+        div(class="title")
+            h2 The Royal Club 
+        div(class='user-header')
+            if (locals.name)
+                div 
+                    p Hi 
+                        a(href="/profile")= `${locals.name}` 
+                div
+                    a(href="/logout") logout
+    main
+        block content

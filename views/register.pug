@@ -1,48 +1,49 @@
-include ./fragments/header.pug
-h1 Please Register
-form(action="/register" method='post')
-    -let fields= {}
-    if locals.fields
-        -fields = locals.fields
-    else
-        -fields = {email:'', name:'', password:'',confirmPassword:'', membership:'' }
-    div
-        div 
-            label(for="email") eMail 
+extends layout.pug 
+block content
+    h1 Please Register
+    form(action="/register" method='post')
+        -let fields= {}
+        if locals.fields
+            -fields = locals.fields
+        else
+            -fields = {email:'', name:'', password:'',confirmPassword:'', membership:'' }
         div
-            input(type="email" id='email' name='email' value=fields.email required)
-        - if (locals.errors && locals.errors.email)
             div 
-                p=locals.errors.email.msg
-    div 
+                label(for="email") eMail 
+            div
+                input(type="email" id='email' name='email' value=fields.email required)
+            - if (locals.errors && locals.errors.email)
+                div 
+                    p=locals.errors.email.msg
         div 
-            label(for="name") Name 
-        div 
-            input(type="name" id='text' name='name' value=fields.name  required)
-        - if (locals.errors && locals.errors.name)
             div 
-                p=locals.errors.name.msg
-    div 
-        div 
-            label(for="password") Password 
-        div
-            input(type='password' id='password' name='password' value=fields.password required)
-        - if (locals.errors && locals.errors.password)
+                label(for="name") Name 
             div 
-                p=locals.errors.password.msg
-    div 
-        div
-            label(for='') Confirm Password 
+                input(type="name" id='text' name='name' value=fields.name  required)
+            - if (locals.errors && locals.errors.name)
+                div 
+                    p=locals.errors.name.msg
         div 
-            input(type='password' id='confirmPassword' name='confirmPassword' value=fields.confirmPassword required)
-        - if (locals.errors && locals.errors.confirmPassword)
             div 
-                p=locals.errors.confirmPassword.msg
-    div 
+                label(for="password") Password 
+            div
+                input(type='password' id='password' name='password' value=fields.password required)
+            - if (locals.errors && locals.errors.password)
+                div 
+                    p=locals.errors.password.msg
         div 
-            label(for='membership') Membership Code (optional)
+            div
+                label(for='') Confirm Password 
+            div 
+                input(type='password' id='confirmPassword' name='confirmPassword' value=fields.confirmPassword required)
+            - if (locals.errors && locals.errors.confirmPassword)
+                div 
+                    p=locals.errors.confirmPassword.msg
         div 
-            input(type='text' id='membership' name='membership' value=fields.membership)
-    div 
-        button(type='submit') Submit  
-include ./fragments/footer.pug
+            div 
+                label(for='membership') Membership Code (optional)
+            div 
+                input(type='text' id='membership' name='membership' value=fields.membership)
+        div 
+            button(type='submit') Submit  
+

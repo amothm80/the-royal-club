@@ -1,20 +1,19 @@
-include ./fragments/header.pug
-h1 posts
-if (locals.savePostSuccess)
-    p Post saved successfully.
-a(href="/add-post") 
-    button Add Post 
-if locals.posts 
-    each post in posts
-        div 
+extends layout.pug 
+block content
+    if (locals.savePostSuccess)
+        p Post saved successfully.
+    a(href="/add-post") 
+        button Add Post 
+    if locals.posts 
+        each post in posts
             div 
-                p=post.subject 
+                div 
+                    p=post.subject 
+                div 
+                    p=`by ${post.name}` 
+                div 
+                    p= `on ${post.date_time}`
             div 
-                p=`by ${post.name}` 
+                p=post.content 
             div 
-                p= `on ${post.date_time}`
-        div 
-            p=post.content 
-        div 
-            p ---------------------------
-include ./fragments/footer.pug
+                p ---------------------------

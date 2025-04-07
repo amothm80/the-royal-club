@@ -1,17 +1,19 @@
-h1 Add Post 
+extends layout.pug 
+block content
+    h1 Add Post 
 
-form(action="/add-post" method='POST')
-    div 
+    form(action="/add-post" method='POST')
         div 
-            label(for="subject") Subject 
+            div 
+                label(for="subject") Subject 
+            div 
+                input(type="text" name='subject' id='subject')
+        div
+            div 
+                label(for='content') Content 
+            div 
+                textarea(name="content" id='content') 
         div 
-            input(type="text" name='subject' id='subject')
-    div
-        div 
-            label(for='content') Content 
-        div 
-            textarea(name="content" id='content') 
-    div 
-        button(type='submit') Save Post
-        a(href="/posts")
-            button(type='button') Cancel 
+            button(type='submit') Save Post
+            a(href="/posts")
+                button(type='button') Cancel 
