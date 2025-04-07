@@ -1,0 +1,10 @@
+div 
+div(class="title")
+    h2 The Royal Club 
+div(class='user-header')
+    if (locals.name)
+        div 
+            p Hi 
+                a(href="/profile")= `${locals.name}` 
+        div
+            a(href="/logout") logout
