@@ -6,14 +6,28 @@ block content
         button Add Post 
     if locals.posts 
         each post in posts
-            div 
-                div 
-                    p=post.subject 
-                div 
-                    p=`by ${post.name}` 
-                div 
-                    p= `on ${post.date_time}`
-            div 
-                p=post.content 
-            div 
-                p ---------------------------
+            div(class='posts')
+                div(class="post")
+                    div(class="post-header") 
+                        div
+                            div 
+                                h6 subject
+                            div
+                                p=post.subject 
+                        div 
+                            div
+                                h6 by
+                            div
+                                p=post.name 
+                        div 
+                            div 
+                                h6 on 
+                            div 
+                                p=post.date_time
+                    div(class="post-content")
+                        p=post.content 
+                    if locals.user.admin    
+                        div 
+                            a(href=`/delete-post/${post.id}`)
+                                button Delet Post 
+

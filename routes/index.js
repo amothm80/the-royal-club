@@ -9,8 +9,9 @@ import { registerRouter } from "./register.js";
 import { postsRouter } from "./posts.js";
 
 export const router = express.Router();
-
 router.get("/", (req, res, next) => {
+  console.log("root route")
+
   res.redirect('/login')
 });
 
@@ -18,7 +19,6 @@ router.get("/", (req, res, next) => {
  * LOGIN ROUTE & LOGOUT ROUTE
  *
  */
-
 
 router.use(authenticateRouter)
 
@@ -29,7 +29,12 @@ router.use(authenticateRouter)
 
 router.use(registerRouter)
 
+
+
 router.use((req,res,next)=>{
+  console.log("login redirect when unauthenticated")
+  console.log("Authenticated:", req.isAuthenticated());
+
   if (!req.isAuthenticated()){
     res.redirect('/login')
   }
@@ -43,6 +48,7 @@ router.use((req,res,next)=>{
 /**
  *  POSTS ROUTES
  */
+
 router.use(postsRouter)
 
 

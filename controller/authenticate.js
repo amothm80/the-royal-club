@@ -1,8 +1,10 @@
 import passport from "passport";
 
 export function getLogin(req, res, next) {
+  console.log("login route")
+
   if (req.isAuthenticated()){
-    res.redirect('/posts')
+    return res.redirect('/posts')
   }
   if (req.session.loginError) {
     res.locals.error = "Wrong email/password provided";
@@ -44,9 +46,9 @@ export function loginFailure(req, res, next) {
 
 export function loginSuccess(req, res, next) {
   if (req.isAuthenticated()) {
-    res.redirect("/posts");
+    return res.redirect("/posts");
   } else {
-    res.redirect("/login");
+    return res.redirect("/login");
   }
 }
 

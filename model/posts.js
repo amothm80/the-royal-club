@@ -12,4 +12,10 @@ export async function  savePost(subject, content, user){
     )
 }
 
+export async function deletePostById(postId){
+  return await pool.query(
+    "DELETE FROM posts WHERE id = $1",[postId]
+  )
+}
+
 // select posts.id, posts.subject,posts.content, posts.date_time, users.name from posts inner join users on posts.poster = users.id;

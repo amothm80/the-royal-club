@@ -9,10 +9,12 @@ import pgSimple from "connect-pg-simple";
 import { pool } from "./config/database.js";
 import { __dirname } from "./lib/dirname.js";
 import { router } from "./routes/index.js";
+import morgan from "morgan";
 
 const pgSession = pgSimple(session);
 const app = express();
 
+app.use(morgan("dev"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.disable("x-powered-by");
@@ -65,7 +67,7 @@ app.use((req, res, next) => {
   }else{
     delete res.locals.name;
   }
-  console.log(req.user)
+  // console.log(req.user)
   next();
 });
 

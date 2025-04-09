@@ -13,7 +13,7 @@ const customFields = {
 };
 
 const verifyCallback = async (username, password, done) => {
-  console.log("passport callback")
+  // console.log("passport callback")
 
   try {
     const { rows } = await findUserByEmail(username)
@@ -37,12 +37,12 @@ const strategy = new LocalStrategy(customFields,verifyCallback);
 passport.use(strategy);
 
 passport.serializeUser((user, done) => {
-  console.log('serialize')
+  // console.log('serialize')
   done(null, user.id);
 });
 
 passport.deserializeUser(async (id, done) => {
-  console.log('deserialize')
+  // console.log('deserialize')
   try {
     const { rows } = await findUserById(id)
     const user = rows[0];

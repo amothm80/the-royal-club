@@ -5,7 +5,8 @@
   --primary-200: hsl(51, 100%, 89%);
   --primary-300: hsl(51, 100%, 75%);
   --primary-400: hsl(51, 100%, 64%);
-  --primary-500: hsl(51, 100%, 50%); /*buttons*/
+  --primary-550: hsl(51, 100%, 50%); /*buttons*/
+  --primary-550: hsl(51, 90%, 50%); /*buttons*/
   --primary-600: hsl(51, 100%, 38%);
   --primary-700: hsl(51, 100%, 25%);
   --primary-800: hsl(51, 100%, 16%);
@@ -58,6 +59,8 @@
   --success-950: hsl(111, 100%, 5%);
 
   --text: var(--primary-900);
+
+  --radius: 0.5rem;
 }
 * {
   color: var(--text);
