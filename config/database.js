@@ -10,5 +10,5 @@ export const pool = new Pool({
   database: process.env.DB,
   password: process.env.DBPASSWORD,
   port: process.env.DBPORT,
-  // ssl:true,
+  ssl:true,
 });
